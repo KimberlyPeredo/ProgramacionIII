@@ -99,17 +99,17 @@ public class Tablero {
         System.out.println("\nTABLERO:");
         for (int fila = 0; fila < FILAS; fila++) {
             for (int columna = 0; columna < COLUMNAS; columna++) {
-                if (descubierto[fila][columna]) {
-                    if (tablero[fila][columna] == MINA) {
-                        System.out.print("X ");
-                    } else {
-                        System.out.print(tablero[fila][columna] + " ");
-                    }
+                if (!descubierto[fila][columna]) {
+                    System.out.printf("%-3s", "-");  // Casilla no descubierta
+                } else if (tablero[fila][columna] == MINA) {
+                    System.out.printf("%-3s", "X");  // Mina
+                } else if (tablero[fila][columna] == 0) {
+                    System.out.printf("%-3s", " ");  // Espacio vacío para el "0"
                 } else {
-                    System.out.print("- ");
+                    System.out.printf("%-3d", tablero[fila][columna]);  // Número de minas adyacentes
                 }
             }
-            System.out.println();
+            System.out.println();  // Salto de línea después de cada fila
         }
     }
 
@@ -119,12 +119,14 @@ public class Tablero {
         for (int fila = 0; fila < FILAS; fila++) {
             for (int columna = 0; columna < COLUMNAS; columna++) {
                 if (tablero[fila][columna] == MINA) {
-                    System.out.print("X ");
+                    System.out.printf("%-3s", "X");  // Mina
+                } else if (tablero[fila][columna] == 0) {
+                    System.out.printf("%-3s", " ");  // Espacio vacío para el "0"
                 } else {
-                    System.out.print(tablero[fila][columna] + " ");
+                    System.out.printf("%-3d", tablero[fila][columna]);  // Número de minas adyacentes
                 }
             }
-            System.out.println();
+            System.out.println();  // Salto de línea después de cada fila
         }
     }
 }
